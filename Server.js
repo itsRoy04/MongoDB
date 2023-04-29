@@ -5,6 +5,7 @@ const signup = require('./Signup');
 const dashboard = require('./Dashboard');
 const middleWare = require('./middleware');
 let cors = require("cors");
+const fetchData = require('./api');
 
 
 let  app = express();
@@ -16,7 +17,7 @@ app.get('/', function (req, res) {
 })
 app.post('/login', login)
 app.post('/signup',signup)
-app.post('/dashboard', dashboard)
+app.get('/dashboard/fetchData',fetchData)
 
 dbInit()
 

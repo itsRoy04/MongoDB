@@ -17,6 +17,7 @@ async function signup(req, res) {
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
+      mobile : req.body.phone
     });
     res.send({
       success: true,
