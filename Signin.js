@@ -17,16 +17,29 @@ async function login(req, res) {
     const collection = db.collection("users");
     const result = await collection.findOne({ email: req.body.email , password: req.body.password });
 
-    if (result) {
-      res.send({
-        success: true,
-        result,
-      });
-    } else if (!result) {
-      res.send({
-        success: false,
-        message: " invalid credentials",
-      });
+    if (!result) {
+
+        const collection = db.collection("admin");
+        const result = await collection.findOne({ email: req.body.email , password: req.body.password });
+        if(result){
+            res.send({
+                success: true,
+                result,
+                status : "admin"
+              });
+        }else{
+            res.send({
+                success:false,
+                message : "Invalid Credentials"
+              });
+        }
+   
+    } else if (result) {
+        res.send({
+            success: true,
+            result,
+            status : "user"
+          });
     }
     client.close();
   } catch (error) {

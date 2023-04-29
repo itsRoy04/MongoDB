@@ -2,6 +2,7 @@ let express = require('express');
 const dbInit = require('./mongo');
 const login = require('./Signin');
 const signup = require('./Signup');
+const admin = require('./admin');
 const dashboard = require('./Dashboard');
 const middleWare = require('./middleware');
 let cors = require("cors");
@@ -18,6 +19,7 @@ app.get('/', function (req, res) {
 })
 app.post('/login', login)
 app.post('/signup',signup)
+app.post('/create_admin',admin)
 app.get('/dashboard/fetchData',fetchData)
 app.post('/dashboard/delete',deleteUser)
 
