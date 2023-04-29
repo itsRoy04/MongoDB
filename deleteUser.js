@@ -1,8 +1,8 @@
 const MongoClient = require("mongodb").MongoClient;
 const dbName = "mydatabase";
 
-async function deleteOne(req, res) {
-    console.log(req.body);
+async function deleteUser(req, res) {
+    console.log("TEST ",req.body);
   try {
     const client = await MongoClient.connect(process.env.DB_URL, {
       useNewUrlParser: true,
@@ -20,4 +20,4 @@ async function deleteOne(req, res) {
   }
 }
 
-module.exports = deleteOne;
+module.exports = deleteUser;

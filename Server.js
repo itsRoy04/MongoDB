@@ -6,7 +6,7 @@ const dashboard = require('./Dashboard');
 const middleWare = require('./middleware');
 let cors = require("cors");
 const fetchData = require('./api');
-const deleteOne = require('./deleteUser');
+const deleteUser = require('./deleteUser');
 
 
 let  app = express();
@@ -19,7 +19,7 @@ app.get('/', function (req, res) {
 app.post('/login', login)
 app.post('/signup',signup)
 app.get('/dashboard/fetchData',fetchData)
-app.delete('/dashboard/delete',deleteOne)
+app.post('/dashboard/delete',deleteUser)
 
 dbInit()
 
